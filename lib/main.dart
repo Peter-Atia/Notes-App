@@ -6,8 +6,8 @@ void main() {
 }
 
 class NotesApp extends StatelessWidget {
-  NotesApp({super.key});
-  bool darkTheme = true;
+  const NotesApp({super.key});
+  final bool darkTheme = true;
 
   @override
   Widget build(BuildContext context) {
