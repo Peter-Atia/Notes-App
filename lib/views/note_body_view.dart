@@ -14,6 +14,7 @@ class NoteBodyView extends StatelessWidget {
         children: [
           CustomAppBar(title: "Notes",icon: Icons.search,),
           Expanded(child: NoteListView()),
+          SafeArea(child: Container()),
 
         ],
       ),
