@@ -16,9 +16,13 @@ class NoteView extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
             builder: (context) {
-              return AddNote();
+              return FractionallySizedBox(
+                  heightFactor: 0.85,
+                  child: AddNote()
+              );
             },
           );
         },

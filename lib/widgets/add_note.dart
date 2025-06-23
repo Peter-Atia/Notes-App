@@ -12,23 +12,30 @@ class AddNote extends StatelessWidget {
     return BlocProvider(
       create: (context)=> AddNoteCubit() ,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-        child: BlocConsumer<AddNoteCubit, AddNoteStates>(
-          builder: (context, state) {
-            return AbsorbPointer(
-              absorbing: state is AddNoteLoading ? true :false,
-                child: AddNoteForm()
-            );
-          },
-          listener: (context, state) {
-            if(state is AddNoteSuccess){
-              Navigator.pop(context);
-            }
-            if(state is AddNoteFailure){
-              debugPrint("failed");
+        padding: const EdgeInsets.symmetric(
+            horizontal: 32,
+            vertical: 24
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: BlocConsumer<AddNoteCubit, AddNoteStates>(
+            builder: (context, state) {
+              return AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true :false,
+                  child: AddNoteForm()
+              );
+            },
+            listener: (context, state) {
+              if(state is AddNoteSuccess){
+                Navigator.pop(context);
+              }
+              if(state is AddNoteFailure){
+                debugPrint("failed");
 
-            }
-          },
+              }
+            },
+          ),
         ),
       ),
     );
