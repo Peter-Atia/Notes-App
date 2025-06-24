@@ -54,7 +54,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       date: DateFormat(
                         'h:mm a, dd MMM yyyy',
                       ).format(DateTime.now()).toString(),
-                      color: Colors.blueAccent.value,
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
