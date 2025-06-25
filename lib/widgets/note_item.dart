@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
+import 'package:notes_app/widgets/show_snack_bar.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
@@ -37,15 +38,8 @@ class NoteItem extends StatelessWidget {
                   trailing: IconButton(
                     onPressed: () {
                       note.delete();
+                      showSnackBar(context, message: "Deleted successfully");
                       BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            "Deleted successfully",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
-                      );
                     },
                     icon: Icon(Icons.delete, size: 26),
                   ),

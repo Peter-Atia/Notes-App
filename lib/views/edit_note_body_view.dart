@@ -6,6 +6,8 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
+import '../widgets/show_snack_bar.dart';
+
 class EditNoteBodyView extends StatefulWidget {
   EditNoteBodyView({super.key, required this.note});
   NoteModel note;
@@ -40,14 +42,7 @@ class _EditNoteBodyViewState extends State<EditNoteBodyView> {
                   ).format(DateTime.now()).toString();
                   widget.note.save();
                   BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        "Edited successfully",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                  );
+                  showSnackBar(context , message: "Edited successfully");
                   Navigator.pop(context);
                 } else {
                   autoValidateMode = AutovalidateMode.always;
