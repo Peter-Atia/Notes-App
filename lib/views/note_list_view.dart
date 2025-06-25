@@ -14,7 +14,13 @@ class NoteListView extends StatelessWidget {
     return BlocBuilder<NoteCubit, NoteStates>(
       builder: (context, state) {
         BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-        List<NoteModel> noteList = BlocProvider.of<NoteCubit>(context).notes ?? [];
+        List<NoteModel> noteList =
+            BlocProvider.of<NoteCubit>(context).notes ?? [];
+        if (noteList.isEmpty) {
+          return Center(
+            child: Text("Make your first Note", style: TextStyle(fontSize: 18)),
+          );
+        }
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: ListView.builder(

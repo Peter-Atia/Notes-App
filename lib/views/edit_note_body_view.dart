@@ -40,6 +40,14 @@ class _EditNoteBodyViewState extends State<EditNoteBodyView> {
                   ).format(DateTime.now()).toString();
                   widget.note.save();
                   BlocProvider.of<NoteCubit>(context).fetchAllNotes();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Edited successfully",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  );
                   Navigator.pop(context);
                 } else {
                   autoValidateMode = AutovalidateMode.always;
